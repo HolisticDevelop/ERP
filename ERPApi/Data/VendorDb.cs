@@ -11,5 +11,6 @@ class VendorDb : DbContext
 
     public DbSet<Vendor> Vendors => Set<Vendor>();
     public DbSet<Product> Products => Set<Product>();
-
+    public DbSet<Customer> Customers => Set<Customer>();
+    
 }

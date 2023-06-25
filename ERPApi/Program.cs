@@ -1,12 +1,14 @@
 using ERPApi.Data;
 using ERPApi.Entities;
 using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<VendorDb>(opt => opt.UseInMemoryDatabase("VendorList"));
+builder.Services.AddEndpointsApiExplorer();
 var app = builder.Build();
+
+
 
 app.MapGet("/", () => "Hello World!");
 
@@ -31,6 +33,17 @@ app.MapPost("/products", async (Product product, VendorDb db) =>
     db.Products.Add(product);
     await db.SaveChangesAsync();
     return Results.Created($"/products/{product.Id}", product);
+});
+
+// Customers
+app.MapGet("/customers", async (VendorDb db) => 
+    await db.Customers.ToListAsync());
+
+app.MapPost("/customers", async (Customer customer, VendorDb db) =>
+{
+    db.Customers.Add(customer);
+    await db.SaveChangesAsync();
+    return Results.Created($"/customers/{customer.Id}", customer);
 });
 
 app.Run();
