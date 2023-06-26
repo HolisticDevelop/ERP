@@ -14,5 +14,6 @@ public class Product
     public string? Type { get; set; }
     public string? Tag { get; set; }
 
-    public Vendor Vendor { get; set; } = null!;
+    public int VendorId { get; set; }
+    public Vendor Vendor { get; set; }
 }
