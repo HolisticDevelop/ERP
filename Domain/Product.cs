@@ -1,4 +1,5 @@
-﻿using ERPApi.Framework;
+﻿using Domain.VO;
+using ERPApi.Framework;
 
 namespace Domain;
 

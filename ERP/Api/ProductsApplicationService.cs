@@ -2,10 +2,10 @@
 
 namespace ERP.Api;
 
-public class ProductApplicationService
+public class ProductsApplicationService
 {
     public Task Handle(Sales.Products.V1.Create command)
     {
-        
+        return command
     }
 }

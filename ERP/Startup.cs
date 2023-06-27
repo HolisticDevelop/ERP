@@ -1,40 +1,48 @@
 ﻿
-using ERPApi.
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Swashbuckle.AspNetCore.Swagger;
+using ERP.Api;
+using Microsoft.OpenApi.Models;
+
 namespace ERP;
 
 public class Startup
 {
-    public Startup(IHostingEnvironment environment, IConfiguration configuration)
+    public Startup(IWebHostEnvironment environment, IConfiguration configuration)
     {
         Environment = environment;
         Configuration = configuration;
     }
 
     private IConfiguration Configuration { get; }
-    private IHostingEnvironment Environment { get; }
+    private IWebHostEnvironment Environment { get; }
 
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddSingleton(new ClassifiedAdsApplicationService());
+        services.AddSingleton(new ProductsApplicationService());
 
         services.AddMvc();
         services.AddSwaggerGen(c =>
         {
-            c.SwaggerDoc("v1",
-                new Info
+            c.SwaggerDoc("v1", new OpenApiInfo
+            {
+                Version = "v1",
+                Title = "ERP",
+                Description = "An ASP.NET Core Web API for managing ERP",
+                TermsOfService = new Uri("https://example.com/terms"),
+                Contact = new OpenApiContact
                 {
-                    Title = "ClassifiedAds",
-                    Version = "v1"
-                });
+                    Name = "Example Contact",
+                    Url = new Uri("https://example.com/contact")
+                },
+                License = new OpenApiLicense
+                {
+                    Name = "Example License",
+                    Url = new Uri("https://example.com/license")
+                }
+            });
         });
     }
 
-    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
         if (env.IsDevelopment())
         {

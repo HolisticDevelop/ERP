@@ -1,6 +1,6 @@
 ﻿using ERPApi.Framework;
 
-namespace Domain;
+namespace Domain.VO;
 
 public class Money : Value<Money>
 {

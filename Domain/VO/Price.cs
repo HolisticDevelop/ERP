@@ -1,4 +1,4 @@
-﻿namespace Domain;
+﻿namespace Domain.VO;
 
 public class Price : Money
 {

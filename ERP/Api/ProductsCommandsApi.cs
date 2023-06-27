@@ -21,6 +21,6 @@ public class ProductsCommandsApi : Controller
 
         Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(message));
 
-        return ok();
+        return Ok();
     }
 }
