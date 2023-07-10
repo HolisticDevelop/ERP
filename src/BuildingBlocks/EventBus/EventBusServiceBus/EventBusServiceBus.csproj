@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>ERP.BuildingBlocks.EventBusServiceBus</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.15.0" />
+      <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+      <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0-preview.5.23280.8" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\EventBus\EventBus.csproj" />
+    </ItemGroup>
+
+</Project>
